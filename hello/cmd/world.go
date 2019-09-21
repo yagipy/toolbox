@@ -44,7 +44,7 @@ to quickly create a Cobra application.`,
 	//	fmt.Println("world called")
 	//},
 	RunE: func(cmd *cobra.Command, args []string) error {
-		fmt.Printf("ハロー%sさん", args[0])
+		fmt.Printf("ハロー%sさん%s", args[0], args[1])
 		return nil
 	},
 }
