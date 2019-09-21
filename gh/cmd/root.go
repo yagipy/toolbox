@@ -30,10 +30,12 @@ to quickly create a Cobra application.`,
         fmt.Println(string(push_out))
       }
 
-      addFileName, _:= cmd.Flags().GetString("add")
-      if addFileName != "" {
-        add_out, _:= exec.Command("git", "add", addFileName).CombinedOutput()
-        fmt.Println(string(add_out))
+      addFileNames, _:= cmd.Flags().GetStringSlice("add")
+      if len(addFileNames) != 0 {
+          for i := range addFileNames {
+              add_out, _:= exec.Command("git", "add", addFileNames[i]).CombinedOutput()
+              fmt.Println(string(add_out))
+          }
       }
 
       commitMsg, _:= cmd.Flags().GetString("cm")
@@ -42,8 +44,8 @@ to quickly create a Cobra application.`,
         fmt.Println(string(commit_out))
       }
 
-      prBranch, _:= cmd.Flags().GetString("pr")
-      if prBranch == "o" {
+      pr, _:= cmd.Flags().GetBool("pr")
+      if pr {
           exec.Command("git", "push").Start()
 
           exec.Command("hub", "browse").Run()
@@ -64,9 +66,9 @@ func init() {
   rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.gh.yaml)")
 
   rootCmd.Flags().StringP("cop", "b", "", "checkout -b and push")
-  rootCmd.Flags().StringP("add", "a", "", "add")
+  rootCmd.Flags().StringSliceP("add", "a", []string{}, "add")
   rootCmd.Flags().StringP("cm", "c", "", "commit -m")
-  rootCmd.Flags().StringP("pr", "p", "", "pull-request")
+  rootCmd.Flags().BoolP("pr", "p", false, "pull-request")
 }
 func initConfig() {
   if cfgFile != "" {
