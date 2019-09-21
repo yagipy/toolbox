@@ -45,11 +45,7 @@ to quickly create a Cobra application.`,
       }
 
       prBranch, _:= cmd.Flags().GetString("pr")
-      if prBranch == "" {
-          exec.Command("git", "push").Start()
-
-          exec.Command("hub", "browse").Run()
-      }else {
+      if prBranch == "o" {
           exec.Command("git", "push").Start()
 
           exec.Command("hub", "browse").Run()
