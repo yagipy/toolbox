@@ -16,9 +16,9 @@ limitations under the License.
 package main
 
 import (
-  cmd2 "github.com/HiroyukiYagihashi/tooland/hello/cmd"
+  "github.com/HiroyukiYagihashi/tooland/gh/cmd"
 )
 
 func main() {
-  cmd2.Execute()
+  cmd.Execute()
 }
