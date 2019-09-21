@@ -19,7 +19,7 @@ var rootCmd = &cobra.Command{
   	Run: func(cmd *cobra.Command, args []string) {
       branchName, _:= cmd.Flags().GetString("cop")
       if branchName != "" {
-        checkout_out, _ := exec.Command("git", "checkout", "-b", branchName).CombinedOutput()
+        checkout_out, _:= exec.Command("git", "checkout", "-b", branchName).CombinedOutput()
         fmt.Println(string(checkout_out))
         push_out, _ := exec.Command("git", "push", "-u", "origin", branchName).CombinedOutput()
         fmt.Println(string(push_out))
@@ -41,9 +41,14 @@ var rootCmd = &cobra.Command{
 
       pr, _:= cmd.Flags().GetBool("pr")
       if pr {
-          exec.Command("git", "push").Start()
+          pr_out, _:= exec.Command("git", "push").CombinedOutput()
+          fmt.Println(string(pr_out))
+      }
 
-          exec.Command("hub", "browse").Run()
+      open, _:= cmd.Flags().GetBool("open")
+      if open {
+          open_out, _:= exec.Command("hub", "browse").CombinedOutput()
+          fmt.Println(string(open_out))
       }
     },
 }
@@ -64,6 +69,7 @@ func init() {
   rootCmd.Flags().StringSliceP("add", "a", []string{}, "add")
   rootCmd.Flags().StringP("cm", "c", "", "commit -m")
   rootCmd.Flags().BoolP("pr", "p", false, "pull-request")
+  rootCmd.Flags().BoolP("open", "o", false, "hub browse")
 }
 func initConfig() {
   if cfgFile != "" {
