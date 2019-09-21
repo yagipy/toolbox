@@ -9,9 +9,7 @@ import (
   "os/exec"
 )
 
-
 var cfgFile string
-
 
 var rootCmd = &cobra.Command{
   Use:   "gh",
