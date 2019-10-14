@@ -1,7 +1,7 @@
 package main
 
 import (
-  "github.com/HiroyukiYagihashi/tooland/gh/cmd"
+  "github.com/HiroyukiYagihashi/toolbox/gh/cmd"
 )
 
 func main() {
