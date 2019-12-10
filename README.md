@@ -9,5 +9,5 @@ go install
 ```
 
 # references
-https://ken-aio.github.io/post/2019/01/27/golang-cobra/#%E3%81%BE%E3%81%A8%E3%82%81
-https://blog.engineer.adways.net/entry/advent_calendar_2018/18
+https://github.com/spf13/cobra
+https://golang.org/pkg/os/exec/
