@@ -68,7 +68,7 @@ func init() {
   rootCmd.Flags().StringP("cop", "b", "", "checkout -b and push")
   rootCmd.Flags().StringSliceP("add", "a", []string{}, "add")
   rootCmd.Flags().StringP("cm", "c", "", "commit -m")
-  rootCmd.Flags().BoolP("pr", "p", false, "push")
+  rootCmd.Flags().BoolP("push", "p", false, "push")
   rootCmd.Flags().BoolP("open", "o", false, "hub browse")
 }
 func initConfig() {
