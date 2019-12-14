@@ -4,8 +4,8 @@ tools for me
 
 # Usage
 ```
-go get github.com/HiroyukiYagihashi/tooland
-go install
+$ go get github.com/HiroyukiYagihashi/tooland/gh
+$ go install $GOPATH/src/github.com/HiroyukiYagihashi/toolbox/gh
 ```
 
 # references
